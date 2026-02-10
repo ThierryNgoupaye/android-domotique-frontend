@@ -2,4 +2,36 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- App colors (Orange and variants) -->
+    <color name="orange_primary_900">#BF360C</color>
+    <color name="orange_primary_800">#EF6C00</color>
+    <color name="orange_primary_700">#E65100</color>
+    <color name="orange_primary_600">#FB8C00</color>
+    <color name="orange_primary_500">#FF9800</color>
+    <color name="orange_primary_400">#FFA726</color>
+    <color name="orange_primary_300">#FFB74D</color>
+    <color name="orange_primary_200">#FFCC80</color>
+    <color name="orange_primary_100">#FFE0B2</color>
+    <color name="orange_primary_50">#FFF3E0</color>
+
+
+    <!-- App secondary colors and variants -->
+    <color name="secondary_900">#1B5E20</color>
+    <color name="secondary_800">#2E7D32</color>
+    <color name="secondary_700">#388E3C</color>
+    <color name="secondary_600">#43A047</color>
+    <color name="secondary_500">#4CAF50</color>
+    <color name="secondary_400">#66BB6A</color>
+    <color name="secondary_300">#81C784</color>
+    <color name="secondary_200">#A5D6A7</color>
+    <color name="secondary_100">#C8E6C9</color>
+    <color name="secondary_50">#E8F5E9</color>
+
+
+    <!-- Base Blanc Cassé -->
+    <color name="base_color">#FAF9F6</color>
+    <color name="gray_400">#BDBDBD</color>
+    <color name="gray_500"> #9E9E9E</color>
+    <color name="gray_600">#757575</color>
 </resources>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="15dp"
+    tools:context=".activities.RegisterActivity">
+
+    <ImageView
+        android:id="@+id/login_image_1"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_marginTop="60dp"
+        android:contentDescription="@string/image_description"
+        android:src="@drawable/bg_login_mobile_login_rafiki"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/login_page_title"
+        style="@style/TextAppearance.DomotiqueApp.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:text="@string/login_page_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/login_image_1" />
+
+    <TextView
+        android:id="@+id/login_page_subtitle"
+        style="@style/TextAppearance.DomotiqueApp.Subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/login_page_subtitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/login_page_title" />
+
+    <EditText
+        android:id="@+id/login_page_email_input"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:autofillHints="true"
+        android:background="@drawable/input_border"
+        android:hint="@string/register_page_email_input_hint"
+        android:inputType="textEmailAddress"
+        android:paddingHorizontal="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/login_page_subtitle" />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:contentDescription="@string/image_description"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_email_address_svgrepo_com"
+        app:layout_constraintStart_toStartOf="@id/login_page_email_input"
+        app:layout_constraintTop_toBottomOf="@id/login_page_email_input"
+        app:layout_constraintTop_toTopOf="@id/login_page_email_input" />
+
+
+    <EditText
+        android:id="@+id/login_page_password_input"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:autofillHints="true"
+        android:background="@drawable/input_border"
+        android:hint="@string/register_page_password_hint"
+        android:inputType="textPassword"
+        android:paddingHorizontal="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/login_page_email_input" />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:contentDescription="@string/image_description"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_password_svgrepo_com"
+        app:layout_constraintStart_toStartOf="@id/login_page_password_input"
+        app:layout_constraintTop_toBottomOf="@id/login_page_password_input"
+        app:layout_constraintTop_toTopOf="@id/login_page_password_input" />
+
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:contentDescription="@string/image_description"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_password_svgrepo_com"
+        app:layout_constraintStart_toStartOf="@id/login_page_password_input"
+        app:layout_constraintTop_toBottomOf="@id/login_page_password_input"
+        app:layout_constraintTop_toTopOf="@id/login_page_password_input" />
+
+
+    <Button
+        android:id="@+id/login_page_login_button"
+        style="@style/TextAppearance.DomotiqueApp.Button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_heigh"
+        android:layout_marginTop="50dp"
+        android:text="@string/login_page_login_btn_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/login_page_password_input" />
+
+
+    <TextView
+        android:id="@+id/login_not_have_account"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="63dp"
+        android:layout_marginBottom="30dp"
+        android:text="@string/register_page_not_yet_registered_text"
+        android:textColor="@color/gray_600"
+        android:textSize="15sp"
+        android:textStyle=""
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/login_page_login_button" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="30dp"
+        android:text="@string/register_page_create_an_account_btn"
+        android:textColor="@color/orange_primary_500"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/login_not_have_account"
+        app:layout_constraintTop_toBottomOf="@id/login_page_login_button" />
+</androidx.constraintlayout.widget.ConstraintLayout>

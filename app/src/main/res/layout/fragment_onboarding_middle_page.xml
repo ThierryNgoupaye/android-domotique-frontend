@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp">
+
+    <ImageView
+        android:id="@+id/onboarding_image_1"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="150dp"
+        android:contentDescription="@string/image_description"
+        android:src="@drawable/fig_onboarding_accept_request_rafiki"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/onboarding_get_started_title"
+        style="@style/TextAppearance.DomotiqueApp.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/onboarding_middle_page_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/onboarding_image_1" />
+
+    <TextView
+        android:id="@+id/onboarding_get_started_subtitle"
+        style="@style/TextAppearance.DomotiqueApp.Subtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/onboarding_middle_page_subtitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/onboarding_get_started_title" />
+
+    <Button
+        android:id="@+id/onboarding_middle_page_skip_btn"
+        style="@style/ButtonAppearance.DomotiqueApp.OutlinedButton"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/button_heigh"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="10dp"
+        android:text="@string/onboarding_middle_page_skip_button"
+        app:layout_constraintEnd_toStartOf="@id/onboarding_middle_page_next_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/onboarding_get_started_subtitle" />
+
+    <Button
+        android:id="@+id/onboarding_middle_page_next_btn"
+        style="@style/TextAppearance.DomotiqueApp.Button"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/button_heigh"
+        android:layout_marginTop="40dp"
+        android:text="@string/onboarding_middle_page_next_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/onboarding_middle_page_skip_btn"
+        app:layout_constraintTop_toBottomOf="@id/onboarding_get_started_subtitle" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
