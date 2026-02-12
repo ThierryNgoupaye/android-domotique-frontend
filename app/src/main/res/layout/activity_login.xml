@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="15dp"
+    android:padding="15dp"
     tools:context=".activities.RegisterActivity">
 
     <ImageView
@@ -56,13 +56,13 @@
         app:layout_constraintTop_toBottomOf="@id/login_page_subtitle" />
 
     <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:contentDescription="@string/image_description"
         android:scaleType="fitXY"
-        android:src="@drawable/ic_email_address_svgrepo_com"
+        android:src="@drawable/ic_user_svgrepo_com"
         app:layout_constraintStart_toStartOf="@id/login_page_email_input"
         app:layout_constraintTop_toBottomOf="@id/login_page_email_input"
         app:layout_constraintTop_toTopOf="@id/login_page_email_input" />
@@ -83,26 +83,13 @@
         app:layout_constraintTop_toBottomOf="@id/login_page_email_input" />
 
     <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:contentDescription="@string/image_description"
         android:scaleType="fitXY"
-        android:src="@drawable/ic_password_svgrepo_com"
-        app:layout_constraintStart_toStartOf="@id/login_page_password_input"
-        app:layout_constraintTop_toBottomOf="@id/login_page_password_input"
-        app:layout_constraintTop_toTopOf="@id/login_page_password_input" />
-
-
-    <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:contentDescription="@string/image_description"
-        android:scaleType="fitXY"
-        android:src="@drawable/ic_password_svgrepo_com"
+        android:src="@drawable/ic_password_svgrepo_com__1_"
         app:layout_constraintStart_toStartOf="@id/login_page_password_input"
         app:layout_constraintTop_toBottomOf="@id/login_page_password_input"
         app:layout_constraintTop_toTopOf="@id/login_page_password_input" />
@@ -124,9 +111,8 @@
         android:id="@+id/login_not_have_account"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="63dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="76dp"
         android:text="@string/register_page_not_yet_registered_text"
         android:textColor="@color/gray_600"
         android:textSize="15sp"
@@ -135,16 +121,17 @@
         app:layout_constraintTop_toBottomOf="@id/login_page_login_button" />
 
     <TextView
+        android:id="@+id/login_page_register_btn_text_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginTop="72dp"
         android:text="@string/register_page_create_an_account_btn"
         android:textColor="@color/orange_primary_500"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@id/login_not_have_account"
         app:layout_constraintTop_toBottomOf="@id/login_page_login_button" />
 </androidx.constraintlayout.widget.ConstraintLayout>

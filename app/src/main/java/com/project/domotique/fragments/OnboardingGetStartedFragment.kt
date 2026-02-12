@@ -6,9 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+
+
 import androidx.fragment.app.Fragment
 import com.project.domotique.R
 import com.project.domotique.interfaces.OnboardingNavigationListener
+
+
 
 class OnboardingGetStartedFragment(): Fragment() {
 

@@ -1,5 +1,6 @@
 package com.project.domotique.activities
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +11,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.project.domotique.adapters.ScreenSlidePagerAdapter
 import com.project.domotique.animations.DepthPageTransformer
 import com.project.domotique.interfaces.OnboardingNavigationListener
+import com.project.domotique.utils.LocalStorageManager
 
 
 class OnboardingActivity : AppCompatActivity(), OnboardingNavigationListener {
@@ -23,6 +25,11 @@ class OnboardingActivity : AppCompatActivity(), OnboardingNavigationListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        val localStorageManager = LocalStorageManager(this)
+        if(localStorageManager.getOnboardingPreference()){
+            val intentToLogin = Intent(this, LoginActivity::class.java)
+            startActivity(intentToLogin)
+        }
         setContentView(R.layout.activity_onboarding)
         this.initOnboardingPage()
     }

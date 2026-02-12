@@ -6,7 +6,7 @@
     <!-- Onboarding String resources -->
     <string name="image_description">Image Onboarding</string>
 
-    <string name="onboarding_get_started_title">Votre maison, un controle sans effort...</string>
+    <string name="onboarding_get_started_title">Votre maison, un controle sans effort…</string>
     <string name="onboarding_get_started_subtitle">Pilotez chaque détail de votre maison, de la lumière au chauffage et en toute simplicité. Tout est à portée de main.</string>
     <string name="onboarding_get_started_button_text">Get Started</string>
 
@@ -17,7 +17,7 @@
 
     <string name="onboarding_end_page_title">Près à prendre les commandes ?</string>
     <string name="onboarding_end_page_subtitle">Connectez vous et faites de votre maison, un espace intelligent à votre image.</string>
-    <string name="onboarding_register_button">Register</string>
+    <string name="onboarding_register_button">Créer un compte</string>
     <string name="onboarding_login_button">Login</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
@@ -108,15 +108,19 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
-    <string name="register_page_title">Bienvenue</string>
-    <string name="register_page_subtitle">Une courte description</string>
-    <string name="register_page_email_input_hint">Entrer votre email</string>
+
+    <!-- Register Text -->
+    <string name="register_page_title">Bienvenue à bord !</string>
+    <string name="register_page_subtitle">Enregistre toi et donne vie à ta maison connectée</string>
+    <string name="register_page_email_input_hint">Entrer votre nom d\'utilisateur</string>
     <string name="register_page_password_hint">Entrer un mot de passe</string>
     <string name="register_page_input_confirm_password_hint">Confirmer un mot de passe</string>
-    <string name="register_page_already_have_account_text">Avez vous deja un compte</string>
+    <string name="register_page_already_have_account_text">Vous avez déjà un compte.</string>
     <string name="register_btn_go_to_login_btn">Connectez Vous ?</string>
-    <string name="login_page_title">Bon Retour !</string>
-    <string name="login_page_subtitle">une courte description</string>
+
+    <!-- Login text -->
+    <string name="login_page_title">Content de vous revoir !</string>
+    <string name="login_page_subtitle">Connectez vous à votre application sécurisée qui gère votre maison intelligente.</string>
     <string name="login_page_login_btn_text">Se connecter</string>
     <string name="register_page_not_yet_registered_text">Pas encore enregistré.</string>
     <string name="register_page_create_an_account_btn">Créer un compte !</string>
