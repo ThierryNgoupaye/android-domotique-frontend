@@ -124,6 +124,10 @@
     <string name="login_page_login_btn_text">Se connecter</string>
     <string name="register_page_not_yet_registered_text">Pas encore enregistré.</string>
     <string name="register_page_create_an_account_btn">Créer un compte !</string>
+    <string name="profile_avatar">une description</string>
+    <string name="main_content_title">Bon retour</string>
+    <string name="user_name">Utilisateur</string>
+    <string name="my_house_fragment_title">Mes maisons</string>
 
 
 </resources>

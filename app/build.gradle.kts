@@ -40,9 +40,14 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
 
+    //noinspection UseTomlInstead
     implementation("androidx.fragment:fragment-ktx:1.8.9")
+    //noinspection UseTomlInstead
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.10.0")
-    implementation("com.google.code.gson:gson:2.10.1")
+    //noinspection UseTomlInstead
+    implementation("com.google.code.gson:gson:2.13.2")
+    //noinspection UseTomlInstead
+    implementation("com.github.bumptech.glide:glide:5.0.5")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

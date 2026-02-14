@@ -1,6 +1,6 @@
 package com.project.domotique.models.entities
 
-data class UserEntity(
-    val login: String,
+data class HouseEntity (
+    val houseId: Int,
     val owner: Boolean
 )

@@ -9,4 +9,8 @@
     <dimen name="onboarding_button_textSize">18sp</dimen>
     <dimen name="text_margin">16dp</dimen>
 
+    <dimen name="main_content_app_bar_title_textSize">20sp</dimen>
+    <dimen name="main_content_app_bar_subtitle_textSize">14sp</dimen>
+
+
 </resources>

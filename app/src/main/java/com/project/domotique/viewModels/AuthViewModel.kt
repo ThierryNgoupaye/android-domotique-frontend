@@ -9,6 +9,7 @@ import com.project.domotique.repositories.AuthRepository
 import com.project.domotique.repositories.AuthRepositoryImpl
 import com.project.domotique.uiState.UiState
 import kotlinx.coroutines.launch
+import javax.net.ssl.HttpsURLConnection
 
 class AuthViewModel : ViewModel() {
 
@@ -27,8 +28,9 @@ class AuthViewModel : ViewModel() {
         {
             viewModelScope.launch {
                 authRepository.register(login, password) { code ->
+                println(code)
                 when(code){
-                    201 -> {
+                    HttpsURLConnection.HTTP_OK -> {
                         _authState.postValue(
                             UiState(
                                 loading = false,
@@ -36,7 +38,7 @@ class AuthViewModel : ViewModel() {
                             )
                         )
                     }
-                    400 -> {
+                    HttpsURLConnection.HTTP_BAD_REQUEST -> {
                         _authState.postValue(
                             UiState(
                                 loading = false,
@@ -44,7 +46,7 @@ class AuthViewModel : ViewModel() {
                             )
                         )
                     }
-                    409 -> {
+                    HttpsURLConnection.HTTP_CONFLICT -> {
                         _authState.postValue(
                             UiState(
                                 loading = false,
@@ -102,7 +104,7 @@ class AuthViewModel : ViewModel() {
                 authRepository.login(login, password) { code , loginResponse ->
                     when(code)
                     {
-                        200 -> {
+                        HttpsURLConnection.HTTP_OK -> {
                             loginResponse?.let {
                                 _authState.postValue(
                                     UiState(
@@ -113,7 +115,7 @@ class AuthViewModel : ViewModel() {
                                 )
                             }
                         }
-                        401 -> {
+                        HttpsURLConnection.HTTP_UNAUTHORIZED -> {
                             _authState.postValue(
                                 UiState(
                                     loading = false,
@@ -121,7 +123,7 @@ class AuthViewModel : ViewModel() {
                                 )
                             )
                         }
-                        404 -> {
+                        HttpsURLConnection.HTTP_NOT_FOUND -> {
                             _authState.postValue(
                                 UiState(
                                     loading = false,

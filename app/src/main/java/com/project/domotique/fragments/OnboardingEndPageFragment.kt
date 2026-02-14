@@ -14,14 +14,16 @@ import com.project.domotique.activities.RegisterActivity
 
 class OnboardingEndPageFragment : Fragment() {
 
-    private lateinit var loginBtn : Button
-
+    private lateinit var loginBtn: Button
     private lateinit var registerBtn: Button
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         return inflater.inflate(R.layout.fragment_onboarding_end_page, container, false)
     }
-
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,7 +40,6 @@ class OnboardingEndPageFragment : Fragment() {
         }
     }
 
-
     private fun gotToLogin() {
         val intentToLogin = Intent(activity as? OnboardingActivity, LoginActivity::class.java)
         startActivity(intentToLogin)
@@ -48,7 +49,6 @@ class OnboardingEndPageFragment : Fragment() {
         val intentToRegister = Intent(activity as? OnboardingActivity, RegisterActivity::class.java)
         startActivity(intentToRegister)
     }
-
 
 
 }

@@ -14,6 +14,8 @@ object Constants {
 
     const val ONBOARDING_PREFERENCES_KEY_NAME: String = "alreadyRegistered"
 
+    const val USER_NAME_KEY_NAME: String = "user_name"
+
 
 
 }

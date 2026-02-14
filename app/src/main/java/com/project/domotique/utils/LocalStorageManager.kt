@@ -67,6 +67,25 @@ class LocalStorageManager {
     }
 
 
+    fun saveUserName(userName: String)
+    {
+        this.sharedPreferences.edit {
+            putString(Constants.USER_NAME_KEY_NAME, userName)
+        }
+    }
+
+    fun getUserName(): String? {
+        return this.sharedPreferences.getString(Constants.USER_NAME_KEY_NAME, "Guess User")
+    }
+
+
+    fun removeUserName() {
+        this.sharedPreferences.edit {
+            remove(Constants.USER_NAME_KEY_NAME)
+        }
+    }
+
+
 }
 
 

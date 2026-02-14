@@ -16,18 +16,12 @@ import com.project.domotique.viewModels.AuthViewModel
 import kotlin.getValue
 
 class RegisterActivity : AppCompatActivity() {
-
-
     private lateinit var loginInput : EditText
     private lateinit var passwordInput : EditText
     private lateinit var confirmPasswordInput : EditText
     private lateinit var loginButton : TextView
     private lateinit var registerButton: Button
-
     private val authViewModel: AuthViewModel by viewModels()
-
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,8 +31,6 @@ class RegisterActivity : AppCompatActivity() {
         this.observeRegisterUi()
         this.register()
     }
-
-
 
     private fun observeRegisterUi() {
         this.authViewModel.authState.observe(this) { state ->
@@ -55,31 +47,26 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
     }
-
-
-
-        private fun register() {
-            this.registerButton = findViewById(R.id.register_page_register_button)
-            this.registerButton.setOnClickListener {
-                loginInput = findViewById(R.id.register_page_email_input)
-                passwordInput = findViewById(R.id.register_page_password_input)
-                confirmPasswordInput = findViewById(R.id.register_page_confirm_password_input)
-                this.authViewModel.registerUser(
-                    loginInput.text.toString(),
-                    passwordInput.text.toString(),
-                    confirmPasswordInput.text.toString()
-                )
-            }
+    private fun register() {
+        this.registerButton = findViewById(R.id.register_page_register_button)
+        this.registerButton.setOnClickListener {
+            loginInput = findViewById(R.id.register_page_email_input)
+            passwordInput = findViewById(R.id.register_page_password_input)
+            confirmPasswordInput = findViewById(R.id.register_page_confirm_password_input)
+            this.authViewModel.registerUser(
+                loginInput.text.toString(),
+                passwordInput.text.toString(),
+                confirmPasswordInput.text.toString()
+            )
         }
-
-        private fun goToLogin() {
-            this.loginButton = findViewById(R.id.register_page_login_button)
-            this.loginButton.setOnClickListener {
-                val intentToLogin = Intent(this, LoginActivity::class.java)
-                startActivity(intentToLogin)
-            }
+    }
+    private fun goToLogin() {
+        this.loginButton = findViewById(R.id.register_page_login_button)
+        this.loginButton.setOnClickListener {
+            val intentToLogin = Intent(this, LoginActivity::class.java)
+            startActivity(intentToLogin)
         }
-
+    }
 
 }
 

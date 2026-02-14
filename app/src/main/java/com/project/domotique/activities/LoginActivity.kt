@@ -46,8 +46,9 @@ class LoginActivity : AppCompatActivity() {
                 println("je suis arrivé dans la vue effectivement")
                 println(state.data)
                 state.data?.let{ token ->
-                    println(token)
                     val localStorageManager = LocalStorageManager(this@LoginActivity)
+                    this.loginInput = findViewById(R.id.login_page_email_input)
+                    localStorageManager.saveUserName(loginInput.text.toString())
                     localStorageManager.saveToken(token)
                     val intentToHomePage = Intent(this@LoginActivity, HomeActivity::class.java)
                     startActivity(intentToHomePage)

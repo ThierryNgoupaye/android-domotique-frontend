@@ -38,7 +38,7 @@ class Api {
         request<Unit>(path, "DELETE", onSuccess, null, securityToken);
     }
 
-    inline fun<reified K> delete(path: String, data: K, crossinline onSuccess: (Int) -> Unit, securityToken: String? = null)
+    inline fun <reified K> delete(path: String, data: K, crossinline onSuccess: (Int) -> Unit, securityToken: String? = null)
     {
         request<K>(path, "DELETE", onSuccess, data, securityToken);
     }
