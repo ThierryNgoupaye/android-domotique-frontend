@@ -25,5 +25,7 @@ data class RoomDevices(
 
     fun getLightsNumber() = this.lights.size
 
+    fun getGarageDoorNumber() =  if (this.garageDoor != null) 1 else 0
+
 
 }

@@ -1,6 +1,5 @@
 package com.project.domotique.repositories
 
-import com.project.domotique.models.entities.CommandEntity
 import com.project.domotique.models.entities.DeviceEntity
 import com.project.domotique.models.models.CommandRequest
 import com.project.domotique.models.models.DeviceDTO
@@ -43,23 +42,23 @@ class DeviceRepositoryImpl : DeviceRepository {
 
 
 
-    override fun  placeDeviceCommand(houseId: Int, deviceId:String, token: String, data: CommandRequest, doAction : (statusCode: Int, responseData: CommandEntity?) -> Unit)
+    override fun  placeDeviceCommand(houseId: Int, deviceId:String, token: String, data: CommandRequest, doAction : (statusCode: Int) -> Unit)
     {
         try {
 
-            Api().post<CommandRequest, CommandRequest>(
+            Api().post<CommandRequest>(
                 path = "${Constants.BASE_URL_HOUSE}/${houseId}/devices/${deviceId}/command",
                 data = data,
                 securityToken = token,
-                onSuccess = { code, data ->
-                    doAction( code, CommandRequest.toEntity(data!!))
+                onSuccess = { code ->
+                    doAction( code)
                 },
             )
         }
         catch (error: Exception)
         {
             println(error)
-            doAction(HttpURLConnection.HTTP_INTERNAL_ERROR, null)
+            doAction(HttpURLConnection.HTTP_INTERNAL_ERROR)
         }
 
     }

@@ -44,7 +44,7 @@ class HouseFilterAdapter(
 
     override fun getItemCount(): Int = filterList.size
 
-       class HouseViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+       class HouseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private val filterItem: TextView = itemView.findViewById(R.id.filter_item)
 

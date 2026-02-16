@@ -5,7 +5,6 @@ import com.project.domotique.models.entities.CommandEntity
 data class CommandRequest (
     val command: String
 ){
-
     companion object {
         fun toEntity(request: CommandRequest): CommandEntity {
             return CommandEntity(

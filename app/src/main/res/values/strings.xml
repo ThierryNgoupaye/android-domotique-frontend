@@ -45,7 +45,14 @@
 
     <!-- Device Fragment Text -->
     <string name="device_fragment_default_title">Ma maison</string>
-    <string name="device_fragment_title">Maison #%1$d></string>
+    <string name="device_fragment_title">Maison #%1$d</string>
+    <string name="device_count_label">%1$d appareils</string>
+    <string name="place_order_popup_available_commands">Commandes disponibles</string>
+    <string name="place_order_selected_device_label">Appareil Selectionné</string>
+    <string name="place_command_popup_subtitle">Transmettez une commande à votre appereil en choisissant une commande parmi celles affichées en bas</string>
+    <string name="place_command_popup_title">Transmettre une commande</string>
+    <string name="place_command_popup_appy_btn_text">Appliquer</string>
+    <string name="place_command_cancel_btn_text">Annuler</string>
 
 
 </resources>

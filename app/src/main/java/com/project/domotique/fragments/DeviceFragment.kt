@@ -18,6 +18,7 @@ import com.project.domotique.adapters.HouseDeviceTypeAdapter
 import com.project.domotique.adapters.RoomDeviceAdapter
 import com.project.domotique.models.entities.DeviceEntity.TypeDevice
 import com.project.domotique.models.entities.RoomDevices
+import com.project.domotique.models.models.CommandRequest
 import com.project.domotique.utils.LocalStorageManager
 import com.project.domotique.utils.RoomDistributor
 import com.project.domotique.viewModels.DeviceViewModel
@@ -52,6 +53,7 @@ class DeviceFragment : Fragment() {
         this.deviceTypeRecyclerView = view.findViewById(R.id.different_house_devices)
         this.observeSelectedHouse(view)
         this.observeHouseDevicesUi()
+        this.observeCommandState()
         this.getHouseDevices()
     }
 
@@ -133,25 +135,55 @@ class DeviceFragment : Fragment() {
     private fun initDevicesTypes(deviceRoomList: List<RoomDevices>)
     {
         val deviceTypeList: List<TypeDevice> = listOf(TypeDevice.ROLLING_SHUTTER, TypeDevice.LIGHT, TypeDevice.GARAGE_DOOR)
-        val adapter = HouseDeviceTypeAdapter(deviceTypeList,deviceRoomList)
+        val adapter = HouseDeviceTypeAdapter(requireContext(),deviceTypeList,deviceRoomList)
         this.deviceTypeRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         this.deviceTypeRecyclerView.adapter = adapter
     }
 
 
-    private fun initDeviceList(deviceRoomList: List<RoomDevices>)
-    {
-        val adapter = RoomDeviceAdapter(deviceRoomList)
+    private fun initDeviceList(deviceRoomList: List<RoomDevices>) {
+        val adapter = RoomDeviceAdapter(requireContext(), deviceRoomList) { device, commandLabel ->
+            val houseId = sharedViewModel.getSelectedHouse()?.houseId ?: defaultHouseId
+            val localStorageManager = LocalStorageManager(requireContext())
+            val token = localStorageManager.getToken()
+            if (token != null) {
+                val command = device.availableCommands
+                    .find { it.command.label == commandLabel }
+                    ?.command?.value
+
+                if (command != null) {
+                    deviceViewModel.placeCommand(
+                        houseId = houseId,
+                        deviceId = device.id,
+                        token = token,
+                        data = CommandRequest(command)
+                    )
+                }
+            } else {
+                Toast.makeText(requireContext(), "Session expirée", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(requireContext(), LoginActivity::class.java))
+            }
+        }
         this.roomsRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         this.roomsRecyclerView.adapter = adapter
     }
 
 
-
-
-
-
-
-
-
+    private fun observeCommandState() {
+        deviceViewModel.commandState.observe(viewLifecycleOwner) { state ->
+            if (state.success) {
+                Toast.makeText(requireContext(), "Commande envoyée !", Toast.LENGTH_SHORT).show()
+                getHouseDevices()
+            } else {
+                state.errors?.let { error ->
+                    if (error == "403") {
+                        Toast.makeText(requireContext(), "Session expirée", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(requireContext(), LoginActivity::class.java))
+                    } else {
+                        Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
+    }
 }

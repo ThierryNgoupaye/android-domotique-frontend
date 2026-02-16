@@ -1,20 +1,27 @@
 package com.project.domotique.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.project.domotique.R
 
 
+
 import com.project.domotique.models.entities.DeviceEntity
 import com.project.domotique.models.entities.RoomDevices
+import com.project.domotique.shared.PlaceOrderDialog
+
 
 class RoomDeviceAdapter(
-    private val rooms: List<RoomDevices>
+    val context: Context,
+    private val rooms: List<RoomDevices>,
+    private val onCommandSelected: (DeviceEntity, String) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
@@ -83,10 +90,10 @@ class RoomDeviceAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val roomData = rooms[position]
         when (holder) {
-            is SingleRoomViewHolder -> holder.bind(roomData)
-            is DoubleRoomViewHolder -> holder.bind(roomData)
-            is TripleRoomViewHolder -> holder.bind(roomData)
-            is ListRoomViewHolder -> holder.bind(roomData)
+            is SingleRoomViewHolder -> holder.bind(roomData, onCommandSelected)
+            is DoubleRoomViewHolder -> holder.bind(roomData, onCommandSelected)
+            is TripleRoomViewHolder -> holder.bind(roomData, onCommandSelected)
+            is ListRoomViewHolder -> holder.bind(roomData, onCommandSelected)
         }
     }
 
@@ -94,19 +101,29 @@ class RoomDeviceAdapter(
 
 
 
-    internal class SingleRoomViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val roomTitle: TextView = view.findViewById(R.id.room_title)
-        private val deviceIcon: ImageView = view.findViewById(R.id.device_icon)
-        private val deviceName: TextView = view.findViewById(R.id.device_name)
-        private val deviceState: TextView = view.findViewById(R.id.device_state)
+    internal class SingleRoomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val roomTitle: TextView = itemView.findViewById(R.id.room_title)
+        private val deviceIcon: ImageView = itemView.findViewById(R.id.device_icon)
+        private val deviceName: TextView = itemView.findViewById(R.id.device_name)
+        private val deviceState: TextView = itemView.findViewById(R.id.device_state)
+
+        private val cardView : CardView = itemView.findViewById(R.id.single_device_card)
         
-        fun bind(roomData: RoomDevices) {
+        fun bind(roomData: RoomDevices, onCommandSelected: (DeviceEntity, String) -> Unit) {
             roomTitle.text = roomData.room.name
             val device = roomData.allDevices.firstOrNull()
             device?.let {
                 deviceIcon.setImageResource(getDeviceIcon(it))
                 deviceName.text = getDeviceName(it)
                 deviceState.text = getDeviceState(it)
+            }
+
+            cardView.setOnClickListener {
+                PlaceOrderDialog(
+                    itemView.context,
+                    device!!,
+                    onCommandSelected
+                ).show()
             }
         }
     }
@@ -116,26 +133,43 @@ class RoomDeviceAdapter(
         private val roomTitle: TextView = view.findViewById(R.id.room_title)
         private val leftName: TextView = view.findViewById(R.id.left_name)
         private val leftState: TextView = view.findViewById(R.id.left_state)
-
         private val leftIcon : ImageView = view.findViewById(R.id.left_icon)
 
-        private val rightIcon : ImageView = view.findViewById(R.id.right_icon)
+        private val leftCardView : CardView = view.findViewById(R.id.left_device_card)
 
+        private val rightIcon : ImageView = view.findViewById(R.id.right_icon)
         private val rightName: TextView = view.findViewById(R.id.right_name)
         private val rightState: TextView = view.findViewById(R.id.right_state)
+        private val rightCardView : CardView = view.findViewById(R.id.right_device_card)
         
-        fun bind(roomData: RoomDevices) {
+        fun bind(roomData: RoomDevices, onCommandSelected: (DeviceEntity, String) -> Unit) {
             roomTitle.text = roomData.room.name
-
             val devices = roomData.allDevices
+            val leftDevice = devices[0]
+            val rightDevice = devices[1]
             if (devices.size == 2) {
-                leftName.text = getDeviceName(devices[0])
-                leftState.text = getDeviceState(devices[0])
-                leftIcon.setImageResource(getDeviceIcon(devices[0]))
-                
-                rightName.text = getDeviceName(devices[1])
-                rightState.text = getDeviceState(devices[1])
-                rightIcon.setImageResource(getDeviceIcon(devices[1]))
+                leftName.text = getDeviceName(leftDevice)
+                leftState.text = getDeviceState(leftDevice)
+                leftIcon.setImageResource(getDeviceIcon(leftDevice))
+                leftCardView.setOnClickListener {
+                    PlaceOrderDialog(
+                        itemView.context,
+                        leftDevice,
+                        onCommandSelected
+                    ).show()
+                }
+
+
+                rightName.text = getDeviceName(rightDevice)
+                rightState.text = getDeviceState(rightDevice)
+                rightIcon.setImageResource(getDeviceIcon(rightDevice))
+                rightCardView.setOnClickListener {
+                    PlaceOrderDialog(
+                        itemView.context,
+                        rightDevice,
+                        onCommandSelected
+                    ).show()
+                }
             }
         }
     }
@@ -146,22 +180,23 @@ class RoomDeviceAdapter(
         private val roomTitle: TextView = view.findViewById(R.id.room_title)
         private val leftName: TextView = view.findViewById(R.id.left_name)
         private val leftState: TextView = view.findViewById(R.id.left_state)
-
         private val leftIcon : ImageView = view.findViewById(R.id.left_icon)
 
+        private val leftCard: CardView = view.findViewById(R.id.left_large_card)
+
         private val topName: TextView = view.findViewById(R.id.top_name)
-
         private val topIcon: ImageView = view.findViewById(R.id.top_icon)
-
         private val topState: TextView = view.findViewById(R.id.top_state)
+        private val topCard: CardView = view.findViewById(R.id.right_top_card)
+
 
         private val bottomName: TextView = view.findViewById(R.id.bottom_name)
-
         private val bottomIcon : ImageView = view.findViewById(R.id.bottom_icon)
-
         private val bottomState: TextView = view.findViewById(R.id.bottom_state)
+        private val bottomCard: CardView = view.findViewById(R.id.right_bottom_card)
 
-        fun bind(roomData: RoomDevices) {
+
+        fun bind(roomData: RoomDevices, onCommandSelected: (DeviceEntity, String) -> Unit) {
             roomTitle.text = roomData.room.name
             val devices = roomData.allDevices
             if (devices.size == 3) {
@@ -172,14 +207,36 @@ class RoomDeviceAdapter(
                 leftName.text = getDeviceName(leftDevice)
                 leftState.text = getDeviceState(leftDevice)
                 leftIcon.setImageResource(getDeviceIcon(leftDevice))
+                leftCard.setOnClickListener {
+                    PlaceOrderDialog(
+                        itemView.context,
+                        leftDevice,
+                        onCommandSelected
+                    ).show()
+                }
                 
                 topName.text = getDeviceName(topDevice)
                 topState.text = getDeviceState(topDevice)
                 topIcon.setImageResource(getDeviceIcon(topDevice))
+                topCard.setOnClickListener {
+                    PlaceOrderDialog(
+                        itemView.context,
+                        topDevice,
+                        onCommandSelected
+                    ).show()
+                }
+
 
                 bottomName.text = getDeviceName(bottomDevice)
                 bottomState.text = getDeviceState(bottomDevice)
                 bottomIcon.setImageResource(getDeviceIcon(bottomDevice))
+                bottomCard.setOnClickListener {
+                    PlaceOrderDialog(
+                        itemView.context,
+                        bottomDevice,
+                        onCommandSelected
+                    ).show()
+                }
             }
         }
     }
@@ -188,7 +245,7 @@ class RoomDeviceAdapter(
     internal class ListRoomViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val roomTitle: TextView = view.findViewById(R.id.room_title)
         private val devicesContainer: LinearLayout = view.findViewById(R.id.devices_list_container)
-        fun bind(roomData: RoomDevices) {
+        fun bind(roomData: RoomDevices, onCommandSelected: (DeviceEntity, String) -> Unit) {
             roomTitle.text = roomData.room.name
             devicesContainer.removeAllViews()
             roomData.allDevices.forEach { device ->
@@ -200,6 +257,14 @@ class RoomDeviceAdapter(
                 miniCard.findViewById<TextView>(R.id.mini_device_state).text = getDeviceState(device)
                 miniCard.findViewById<ImageView>(R.id.mini_device_icon).setImageResource(getDeviceIcon(device))
                 devicesContainer.addView(miniCard)
+
+                miniCard.setOnClickListener {
+                    PlaceOrderDialog(
+                        itemView.context,
+                        device,
+                        onCommandSelected
+                    ).show()
+                }
             }
         }
     }

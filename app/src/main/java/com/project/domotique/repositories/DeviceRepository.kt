@@ -9,7 +9,7 @@ interface DeviceRepository {
 
     fun getHouseDevices(houseId : Int, token:String, doAction : (statusCode: Int, responseData: List<DeviceEntity>?) -> Unit)
 
-    fun placeDeviceCommand(houseId: Int, deviceId:String, token: String, data: CommandRequest, doAction : (statusCode: Int, responseData: CommandEntity?) -> Unit)
+    fun placeDeviceCommand(houseId: Int, deviceId:String, token: String, data: CommandRequest, doAction : (statusCode: Int) -> Unit)
 
 
 
