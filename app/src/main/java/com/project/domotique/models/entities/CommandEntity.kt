@@ -14,7 +14,6 @@ data class CommandEntity (
         }
     }
 
-
     enum class Command(val label: String, val value: String) {
         OPEN("Open", "OPEN"),
         CLOSE("Close", "CLOSE"),
@@ -25,13 +24,11 @@ data class CommandEntity (
 
         override fun toString(): String = label
 
-
        companion object {
            fun fromValue(value: String): Command {
                return Command.entries.firstOrNull { it.value == value } ?: throw IllegalArgumentException("Invalid value: $value")
            }
        }
-
     }
 
 }

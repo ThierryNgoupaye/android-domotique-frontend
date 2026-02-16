@@ -6,12 +6,11 @@
     android:layout_height="wrap_content"
     android:padding="8dp">
 
-    <!-- En-tête -->
+
     <TextView
         android:id="@+id/room_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Salon"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
@@ -27,7 +26,7 @@
         app:layout_constraintBottom_toBottomOf="@id/room_title"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Liste verticale des devices -->
+
     <LinearLayout
         android:id="@+id/devices_list_container"
         android:layout_width="match_parent"
@@ -37,9 +36,6 @@
         app:layout_constraintTop_toBottomOf="@id/room_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
-
-        <!-- Les mini-cartes seront ajoutées dynamiquement en Kotlin -->
-
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

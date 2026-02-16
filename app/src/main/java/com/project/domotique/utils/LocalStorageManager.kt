@@ -103,6 +103,19 @@ class LocalStorageManager {
     }
 
 
+    fun clearPreferences() {
+        this.removeHouseId()
+        this.removeToken()
+        this.removeUserName()
+    }
+
+    fun clearAll()
+    {
+        this.clearPreferences()
+        this.removeOnboardingPreference()
+    }
+
+
 }
 
 

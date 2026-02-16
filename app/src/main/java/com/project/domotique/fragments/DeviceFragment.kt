@@ -16,6 +16,8 @@ import com.project.domotique.R
 import com.project.domotique.activities.LoginActivity
 import com.project.domotique.adapters.HouseDeviceTypeAdapter
 import com.project.domotique.adapters.RoomDeviceAdapter
+import com.project.domotique.models.entities.DeviceEntity.TypeDevice
+import com.project.domotique.models.entities.RoomDevices
 import com.project.domotique.utils.LocalStorageManager
 import com.project.domotique.utils.RoomDistributor
 import com.project.domotique.viewModels.DeviceViewModel
@@ -34,11 +36,7 @@ class DeviceFragment : Fragment() {
 
     private lateinit var roomsRecyclerView: RecyclerView
 
-
-
     private lateinit var deviceTypeRecyclerView: RecyclerView
-
-
 
 
 
@@ -47,15 +45,13 @@ class DeviceFragment : Fragment() {
         return inflater.inflate(R.layout.layout_device_fragment, container, false)
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         this.roomsRecyclerView = view.findViewById(R.id.rooms_recycler_view)
         this.deviceTypeRecyclerView = view.findViewById(R.id.different_house_devices)
-        this.deviceTypeRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        this.roomsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         this.observeSelectedHouse(view)
         this.observeHouseDevicesUi()
-        this.initDevicesTypes()
         this.getHouseDevices()
     }
 
@@ -65,18 +61,18 @@ class DeviceFragment : Fragment() {
             if (house != null) displayDevicesForHouse(view, house.houseId)
             else displayDefaultHouse(view)
         }
-        if (sharedViewModel.selectedHouseId.value == null) {
+        if (this.sharedViewModel.selectedHouseId.value == null) {
             displayDefaultHouse(view)
         }
     }
 
     private fun observeHouseDevicesUi() {
-        deviceViewModel.deviceState.observe(viewLifecycleOwner) { state ->
+        this.deviceViewModel.deviceState.observe(viewLifecycleOwner) { state ->
             if (state.success) {
                 state.data?.let { devices ->
                     val roomDevices = RoomDistributor.distributeDevices(devices)
-                    val adapter = RoomDeviceAdapter(roomDevices)
-                    roomsRecyclerView.adapter = adapter
+                    this.initDevicesTypes(roomDevices)
+                    this.initDeviceList(roomDevices)
                 }
             } else {
                 state.errors?.let { error ->
@@ -104,6 +100,8 @@ class DeviceFragment : Fragment() {
         val localStorageManager = LocalStorageManager(requireContext())
         val token = localStorageManager.getToken()
         if(token == null){
+            localStorageManager.clearPreferences()
+            Toast.makeText(requireContext(),"Votre session a expiré, veuillez vous reconnecter",Toast.LENGTH_SHORT).show()
             val intentToLogin = Intent(requireContext(), LoginActivity::class.java)
             startActivity(intentToLogin)
         }
@@ -119,24 +117,33 @@ class DeviceFragment : Fragment() {
 
     private fun displayDevicesForHouse(view: View, houseId: Int) {
         this.deviceFragmentTitle = view.findViewById(R.id.device_fragment_title)
-        this.deviceFragmentTitle.text = "Appareils de la maison #$houseId"
+        this.deviceFragmentTitle.text = requireContext().getString(R.string.device_fragment_title, houseId)
     }
 
 
     private fun displayDefaultHouse(view: View) {
         this.deviceFragmentTitle = view.findViewById(R.id.device_fragment_title)
-        this.deviceFragmentTitle.text = "Mes Appareils"
+        this.deviceFragmentTitle.text = requireContext().getString(R.string.device_fragment_default_title)
         val localStorageManager = LocalStorageManager(requireContext())
         defaultHouseId = localStorageManager.getHouseId()
     }
 
 
 
-    private fun initDevicesTypes()
+    private fun initDevicesTypes(deviceRoomList: List<RoomDevices>)
     {
-        val mockedData = listOf("Volet", "Lumière", "Porte de garage")
-        val adapter = HouseDeviceTypeAdapter(mockedData)
+        val deviceTypeList: List<TypeDevice> = listOf(TypeDevice.ROLLING_SHUTTER, TypeDevice.LIGHT, TypeDevice.GARAGE_DOOR)
+        val adapter = HouseDeviceTypeAdapter(deviceTypeList,deviceRoomList)
+        this.deviceTypeRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         this.deviceTypeRecyclerView.adapter = adapter
+    }
+
+
+    private fun initDeviceList(deviceRoomList: List<RoomDevices>)
+    {
+        val adapter = RoomDeviceAdapter(deviceRoomList)
+        this.roomsRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        this.roomsRecyclerView.adapter = adapter
     }
 
 

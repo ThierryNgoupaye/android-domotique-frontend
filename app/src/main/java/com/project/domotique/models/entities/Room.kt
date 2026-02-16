@@ -6,5 +6,4 @@ data class Room(
     val shutterCount: Int,
     val lightCount: Int,
     val hasGarageDoor: Boolean = false,
-    val icon: Int
 )

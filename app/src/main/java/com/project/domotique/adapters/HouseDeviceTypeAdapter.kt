@@ -7,9 +7,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.project.domotique.R
+import com.project.domotique.models.entities.DeviceEntity.TypeDevice
+import com.project.domotique.models.entities.RoomDevices
 
 class HouseDeviceTypeAdapter(
-    val houseDeviceTypes: List<String>
+    val houseDeviceTypes: List<TypeDevice>,
+    val roomsDeviceList: List<RoomDevices>
 ) : RecyclerView.Adapter<HouseDeviceTypeAdapter.HouseDeviceTypeViewHolder>() {
 
 
@@ -23,7 +26,17 @@ class HouseDeviceTypeAdapter(
 
     override fun onBindViewHolder(holder: HouseDeviceTypeViewHolder, position: Int) {
         val houseDeviceType = this.houseDeviceTypes[position]
-        holder.bind(houseDeviceType)
+        var shutterCount  = 0
+        var lightCount  = 0
+        var garageDoorCount  = 0
+        for (roomDevices in this.roomsDeviceList) {
+            when(houseDeviceType) {
+                TypeDevice.ROLLING_SHUTTER -> shutterCount += roomDevices.getShuttersNumber()
+                TypeDevice.LIGHT -> lightCount += roomDevices.getLightsNumber()
+                TypeDevice.GARAGE_DOOR -> garageDoorCount += 1
+            }
+        }
+        holder.bind(houseDeviceType, shutterCount, lightCount, garageDoorCount)
     }
 
 
@@ -44,23 +57,22 @@ class HouseDeviceTypeAdapter(
 
         private val deviceIcon : ImageView = itemView.findViewById(R.id.device_type_icon)
 
-        fun bind(houseDeviceType: String) {
+        fun bind(houseDeviceType: TypeDevice, shutterCount: Int, lightCount: Int, garageDoorCount: Int) {
             when(houseDeviceType) {
-                "Volet" -> {
-                    typeName.text = "Volet"
-                    deviceNumber.text = "12"
+                TypeDevice.ROLLING_SHUTTER -> {
+                    typeName.text = TypeDevice.ROLLING_SHUTTER.label
+                    deviceNumber.text = shutterCount.toString()
                     deviceIcon.setImageResource(R.drawable.ic_icons8_window_shade_50)
                 }
-                "Lumière" -> {
-                    typeName.text = "Lumière"
-                    deviceNumber.text = "12"
+                TypeDevice.LIGHT -> {
+                    typeName.text = TypeDevice.LIGHT.label
+                    deviceNumber.text = lightCount.toString()
                     deviceIcon.setImageResource(R.drawable.ic_icons8_light_50)
                 }
-                "Porte de garage" -> {
-                    typeName.text = "Porte de garage"
-                    deviceNumber.text = "1"
+                TypeDevice.GARAGE_DOOR -> {
+                    typeName.text = TypeDevice.GARAGE_DOOR.label
+                    deviceNumber.text = garageDoorCount.toString()
                     deviceIcon.setImageResource(R.drawable.ic_icons8_door_sensor_checked_50)
-
                 }
             }
         }

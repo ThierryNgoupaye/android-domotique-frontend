@@ -20,4 +20,10 @@ data class RoomDevices(
             return devices
         }
 
+    fun getShuttersNumber() = this.shutters.size
+
+
+    fun getLightsNumber() = this.lights.size
+
+
 }
