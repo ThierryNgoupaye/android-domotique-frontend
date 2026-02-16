@@ -34,6 +34,7 @@ class LocalStorageManager {
 
 
     fun getToken(): String? {
+        println("token loadé : ${this.sharedPreferences.getString(Constants.TOKEN_KEY_NAME, null)}")
         return this.sharedPreferences.getString(Constants.TOKEN_KEY_NAME, null)
     }
 
@@ -82,6 +83,22 @@ class LocalStorageManager {
     fun removeUserName() {
         this.sharedPreferences.edit {
             remove(Constants.USER_NAME_KEY_NAME)
+        }
+    }
+
+    fun setHouseId(houseId: Int) {
+        this.sharedPreferences.edit {
+            putInt(Constants.HOUSE_ID_KEY_NAME, houseId)
+        }
+    }
+
+    fun getHouseId(): Int {
+        return this.sharedPreferences.getInt(Constants.HOUSE_ID_KEY_NAME, -1)
+    }
+
+    fun removeHouseId(){
+        this.sharedPreferences.edit {
+            remove(Constants.HOUSE_ID_KEY_NAME)
         }
     }
 

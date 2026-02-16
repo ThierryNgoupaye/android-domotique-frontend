@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="30dp"
+    android:padding="8dp">
+
+
+    <TextView
+        android:id="@+id/room_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/orange_primary_500"
+        android:text="Chambre 1"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/chevron"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="10dp"
+        android:contentDescription="@string/image_description"
+        android:src="@drawable/ic_icons8_chevron_right_30"
+        app:layout_constraintBottom_toBottomOf="@id/room_title"
+        app:layout_constraintStart_toEndOf="@id/room_title"
+        app:layout_constraintTop_toTopOf="@id/room_title" />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/left_large_card"
+        android:layout_width="0dp"
+        android:layout_height="145dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        app:cardBackgroundColor="@color/secondary_100"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="@id/right_cards_container"
+        app:layout_constraintEnd_toStartOf="@id/right_cards_container"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/room_title"
+        app:layout_constraintWidth_percent="0.5">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="12dp">
+
+            <ImageView
+                android:id="@+id/left_icon"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:contentDescription="@string/image_description"
+                android:src="@drawable/ic_icons8_door_sensor_checked_50"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/left_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Porte"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/left_icon" />
+
+            <TextView
+                android:id="@+id/left_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ouvert"
+                android:textColor="@color/gray_600"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/left_name" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <LinearLayout
+        android:id="@+id/right_cards_container"
+        android:layout_width="0dp"
+        android:layout_height="145dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/left_large_card"
+        app:layout_constraintTop_toBottomOf="@id/room_title"
+        app:layout_constraintWidth_percent="0.48">
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/right_top_card"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="6dp"
+            android:layout_weight="1"
+            app:cardBackgroundColor="@color/orange_primary_100"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/top_icon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="5dp"
+                    android:contentDescription="@string/image_description"
+                    android:src="@drawable/ic_icons8_light_50"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/top_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/top_icon"
+                    app:layout_constraintTop_toTopOf="@+id/top_icon" />
+
+                <TextView
+                    android:id="@+id/top_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text="Allumé"
+                    android:textColor="@color/gray_600"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@id/top_icon"
+                    app:layout_constraintTop_toBottomOf="@+id/top_name" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/right_bottom_card"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="6dp"
+            android:layout_weight="1"
+            app:cardBackgroundColor="@color/purple_100"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/bottom_icon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="5dp"
+                    android:contentDescription="@string/image_description"
+                    android:src="@drawable/ic_icons8_window_shade_50"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/bottom_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text="Volets"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/bottom_icon"
+                    app:layout_constraintTop_toTopOf="@+id/bottom_icon" />
+
+                <TextView
+                    android:id="@+id/bottom_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text="Allumée"
+                    android:textColor="@color/gray_600"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@id/bottom_icon"
+                    app:layout_constraintTop_toBottomOf="@+id/bottom_name" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

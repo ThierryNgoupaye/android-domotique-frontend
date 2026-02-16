@@ -113,8 +113,11 @@ class Api {
         println(jsonData)
 
         return try {
-            parseJSON<T>(jsonData);
+            val result = parseJSON<T>(jsonData)
+            println("Parsing success: $result")
+            result
         } catch(e: Exception) {
+            println("Error parsing: ${e.message}")
             null
         }
     }

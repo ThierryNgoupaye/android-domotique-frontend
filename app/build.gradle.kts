@@ -48,6 +48,11 @@ dependencies {
     implementation("com.google.code.gson:gson:2.13.2")
     //noinspection UseTomlInstead
     implementation("com.github.bumptech.glide:glide:5.0.5")
+    //noinspection UseTomlInstead
+    implementation("androidx.navigation:navigation-fragment-ktx:2.9.7")
+    //noinspection UseTomlInstead
+    implementation("androidx.navigation:navigation-ui-ktx:2.9.7")
+    implementation(libs.androidx.lifecycle.livedata.ktx)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

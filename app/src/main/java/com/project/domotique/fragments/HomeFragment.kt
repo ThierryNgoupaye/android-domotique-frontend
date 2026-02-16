@@ -8,8 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.LifecycleOwner
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,6 +23,7 @@ import com.project.domotique.animations.GridViewDecoration
 import com.project.domotique.models.entities.HouseEntity
 import com.project.domotique.utils.LocalStorageManager
 import com.project.domotique.viewModels.HouseViewModel
+import com.project.domotique.viewModels.SharedViewModel
 
 
 class HomeFragment: Fragment() {
@@ -32,6 +35,8 @@ class HomeFragment: Fragment() {
     private var houseList: List<HouseEntity>? = null
 
     private val houseViewModel : HouseViewModel by viewModels()
+
+    private val sharedViewModel: SharedViewModel by activityViewModels()
 
 
 
@@ -61,8 +66,6 @@ class HomeFragment: Fragment() {
         val adapter = HouseFilterAdapter(filterList= mockedData) { filter ->
             Toast.makeText(requireContext(), "Filtre: $filter", Toast.LENGTH_SHORT).show()
         }
-
-
         this.houseFilterRecycleView = view.findViewById(R.id.houses_filter)
         this.houseFilterRecycleView.apply {
             this.adapter = adapter
@@ -74,10 +77,10 @@ class HomeFragment: Fragment() {
     private fun initHouseList(view: View)
     {
         this.houseListRecycleView = view.findViewById(R.id.house_list)
-        val houseListAdapter = HouseAdapter(houseList = this.houseList) {
-            Toast.makeText(requireContext(), "Maison ${it?.houseId}", Toast.LENGTH_SHORT).show()
+        val houseListAdapter = HouseAdapter(houseList = this.houseList) { house ->
+            sharedViewModel.setSelectedHouse(house)
+            findNavController().navigate(R.id.deviceFragment)
         }
-
         houseListRecycleView.apply {
             this.adapter = houseListAdapter
             this.layoutManager = GridLayoutManager(requireContext(), 2)
@@ -88,7 +91,7 @@ class HomeFragment: Fragment() {
 
     private fun observeHouseUi(view: View)
     {
-        this.houseViewModel.homeState.observe(requireContext() as LifecycleOwner){ state ->
+        this.houseViewModel.homeState.observe(viewLifecycleOwner){ state ->
             state.errors?.let { errorMessage ->
                 Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
             }
@@ -96,6 +99,14 @@ class HomeFragment: Fragment() {
             {
                 state?.data?.let { list ->
                     this.houseList = list
+                    for(house in list)
+                    {
+                        if(house.owner)
+                        {
+                            val localeStorageManager = LocalStorageManager(requireContext())
+                            localeStorageManager.setHouseId(house.houseId)
+                        }
+                    }
                     this.initHouseList(view)
                 }
                 if(state.data == null)
@@ -106,6 +117,7 @@ class HomeFragment: Fragment() {
             }
         }
     }
+
 
     private fun fetchHouseList()
     {
@@ -119,7 +131,4 @@ class HomeFragment: Fragment() {
         }
         else this.houseViewModel.retrieveUserHouseList(token)
     }
-
-
-
 }
