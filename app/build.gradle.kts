@@ -39,21 +39,14 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-
-    //noinspection UseTomlInstead
-    implementation("androidx.fragment:fragment-ktx:1.8.9")
-    //noinspection UseTomlInstead
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.10.0")
-    //noinspection UseTomlInstead
-    implementation("com.google.code.gson:gson:2.13.2")
-    //noinspection UseTomlInstead
-    implementation("com.github.bumptech.glide:glide:5.0.5")
-    //noinspection UseTomlInstead
-    implementation("androidx.navigation:navigation-fragment-ktx:2.9.7")
-    //noinspection UseTomlInstead
-    implementation("androidx.navigation:navigation-ui-ktx:2.9.7")
+    implementation(libs.androidx.fragment.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.gson)
+    implementation(libs.glide)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.swiperefreshlayout)
     implementation(libs.androidx.lifecycle.livedata.ktx)
-
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

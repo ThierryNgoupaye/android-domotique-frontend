@@ -53,6 +53,7 @@
     <string name="place_command_popup_title">Transmettre une commande</string>
     <string name="place_command_popup_appy_btn_text">Appliquer</string>
     <string name="place_command_cancel_btn_text">Annuler</string>
+    <string name="loading_dialog_text">Chargement...</string>
 
 
 </resources>
