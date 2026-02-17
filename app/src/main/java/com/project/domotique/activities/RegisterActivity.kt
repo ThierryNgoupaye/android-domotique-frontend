@@ -21,12 +21,14 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var confirmPasswordInput : EditText
     private lateinit var loginButton : TextView
     private lateinit var registerButton: Button
+    private lateinit var localStorageManager : LocalStorageManager
     private val authViewModel: AuthViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_register)
+        this.localStorageManager = LocalStorageManager(this)
         this.goToLogin()
         this.observeRegisterUi()
         this.register()
@@ -40,8 +42,7 @@ class RegisterActivity : AppCompatActivity() {
             }
             if(state.success)
             {
-                val localStorageManager = LocalStorageManager(this)
-                localStorageManager.saveOnboardingPreference(true)
+                this.localStorageManager.saveOnboardingPreference(true)
                 val intentToLogin = Intent(this, LoginActivity::class.java)
                 startActivity(intentToLogin)
             }
@@ -67,6 +68,5 @@ class RegisterActivity : AppCompatActivity() {
             startActivity(intentToLogin)
         }
     }
-
 }
 

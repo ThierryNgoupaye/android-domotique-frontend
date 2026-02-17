@@ -48,7 +48,7 @@
         android:autofillHints="true"
         android:background="@drawable/input_border"
         android:hint="@string/register_page_email_input_hint"
-        android:inputType="textEmailAddress"
+        android:inputType="text"
         android:paddingHorizontal="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

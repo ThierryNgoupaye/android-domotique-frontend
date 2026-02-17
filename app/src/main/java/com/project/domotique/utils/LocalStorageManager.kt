@@ -24,8 +24,6 @@ class LocalStorageManager {
     }
 
 
-
-
     fun saveToken(token: String) {
         this.sharedPreferences.edit {
             putString(Constants.TOKEN_KEY_NAME, token)
@@ -34,7 +32,6 @@ class LocalStorageManager {
 
 
     fun getToken(): String? {
-        println("token loadé : ${this.sharedPreferences.getString(Constants.TOKEN_KEY_NAME, null)}")
         return this.sharedPreferences.getString(Constants.TOKEN_KEY_NAME, null)
     }
 
@@ -74,6 +71,7 @@ class LocalStorageManager {
             putString(Constants.USER_NAME_KEY_NAME, userName)
         }
     }
+
 
     fun getUserName(): String? {
         return this.sharedPreferences.getString(Constants.USER_NAME_KEY_NAME, "Guess User")

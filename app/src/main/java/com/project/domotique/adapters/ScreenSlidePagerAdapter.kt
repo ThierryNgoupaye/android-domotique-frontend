@@ -10,9 +10,6 @@ import com.project.domotique.fragments.OnboardingMiddlePageFragment
 
 
 class ScreenSlidePagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
-
-
-
     override fun getItemCount(): Int = 3
 
     override fun createFragment(position: Int): Fragment {

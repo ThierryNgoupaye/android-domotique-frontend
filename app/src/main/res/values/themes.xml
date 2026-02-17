@@ -60,10 +60,25 @@
     </style>
 
 
+    <style name="ButtonAppearance.DomotiqueApp.CancelAction.Button" parent="Widget.Material3.Button">
+        <item name="android:textColor">@color/red_500</item>
+        <item name="android:textSize">@dimen/onboarding_button_textSize</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+
     <style name="ButtonAppearance.DomotiqueApp.OutlinedButton" parent="Widget.Material3.Button.OutlinedButton">
         <item name="strokeColor">@color/orange_primary_400</item>
         <item name="strokeWidth">2dp</item>
         <item name="android:textAppearance">@style/ButtonAppearance.DomotiqueApp.Button</item>
+    </style>
+
+
+    <style name="ButtonAppearance.DomotiqueApp.CancelAction.OutlinedButton" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="strokeColor">@color/red_300</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="android:textAppearance">@style/ButtonAppearance.DomotiqueApp.CancelAction.Button</item>
     </style>
 
 

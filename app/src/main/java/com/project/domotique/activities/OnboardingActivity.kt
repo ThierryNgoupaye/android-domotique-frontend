@@ -20,13 +20,14 @@ class OnboardingActivity : AppCompatActivity(), OnboardingNavigationListener {
     private lateinit var pagerAdapter: ScreenSlidePagerAdapter
     private lateinit var tabLayout: TabLayout
     private lateinit var tabLayoutMediator: TabLayoutMediator
+    private lateinit var  localStorageManager : LocalStorageManager
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        val localStorageManager = LocalStorageManager(this)
-        if(localStorageManager.getOnboardingPreference()){
+        localStorageManager = LocalStorageManager(this)
+        if(this.localStorageManager.getOnboardingPreference()){
             val intentToLogin = Intent(this, HomeActivity::class.java)
             startActivity(intentToLogin)
         }

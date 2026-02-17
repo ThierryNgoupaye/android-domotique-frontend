@@ -5,15 +5,21 @@
     app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@id/homeFragment"
         android:name="com.project.domotique.fragments.HomeFragment"
         android:label="Mes Maisons">
     </fragment>
 
     <fragment
-        android:id="@+id/deviceFragment"
+        android:id="@id/deviceFragment"
         android:name="com.project.domotique.fragments.DeviceFragment"
         android:label="Appareils">
+    </fragment>
+
+    <fragment
+        android:id="@id/house_access_fragment"
+        android:name="com.project.domotique.fragments.HouseAccessFragment"
+        android:label="Accès à ma maison">
     </fragment>
 
 </navigation>

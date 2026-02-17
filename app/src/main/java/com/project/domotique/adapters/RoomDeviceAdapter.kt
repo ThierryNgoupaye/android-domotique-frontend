@@ -64,8 +64,7 @@ class RoomDeviceAdapter(
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        
+        val inflater = LayoutInflater.from(context)
         return when (viewType) {
             TYPE_SINGLE -> {
                 val view = inflater.inflate(R.layout.item_room_single, parent, false)
@@ -106,8 +105,8 @@ class RoomDeviceAdapter(
         private val deviceIcon: ImageView = itemView.findViewById(R.id.device_icon)
         private val deviceName: TextView = itemView.findViewById(R.id.device_name)
         private val deviceState: TextView = itemView.findViewById(R.id.device_state)
-
         private val cardView : CardView = itemView.findViewById(R.id.single_device_card)
+        private var currentDialog: PlaceOrderDialog? = null
         
         fun bind(roomData: RoomDevices, onCommandSelected: (DeviceEntity, String) -> Unit) {
             roomTitle.text = roomData.room.name
@@ -119,11 +118,13 @@ class RoomDeviceAdapter(
             }
 
             cardView.setOnClickListener {
-                PlaceOrderDialog(
+                this.currentDialog?.dismiss()
+                this.currentDialog = PlaceOrderDialog(
                     itemView.context,
                     device!!,
                     onCommandSelected
-                ).show()
+                )
+                this.currentDialog?.show()
             }
         }
     }
@@ -141,6 +142,7 @@ class RoomDeviceAdapter(
         private val rightName: TextView = view.findViewById(R.id.right_name)
         private val rightState: TextView = view.findViewById(R.id.right_state)
         private val rightCardView : CardView = view.findViewById(R.id.right_device_card)
+        private var currentDialog: PlaceOrderDialog? = null
         
         fun bind(roomData: RoomDevices, onCommandSelected: (DeviceEntity, String) -> Unit) {
             roomTitle.text = roomData.room.name
@@ -152,11 +154,13 @@ class RoomDeviceAdapter(
                 leftState.text = getDeviceState(leftDevice)
                 leftIcon.setImageResource(getDeviceIcon(leftDevice))
                 leftCardView.setOnClickListener {
-                    PlaceOrderDialog(
+                    this.currentDialog?.dismiss()
+                    this.currentDialog = PlaceOrderDialog(
                         itemView.context,
                         leftDevice,
                         onCommandSelected
-                    ).show()
+                    )
+                    this.currentDialog?.show()
                 }
 
 
@@ -164,11 +168,13 @@ class RoomDeviceAdapter(
                 rightState.text = getDeviceState(rightDevice)
                 rightIcon.setImageResource(getDeviceIcon(rightDevice))
                 rightCardView.setOnClickListener {
-                    PlaceOrderDialog(
+                    this.currentDialog?.dismiss()
+                    this.currentDialog = PlaceOrderDialog(
                         itemView.context,
                         rightDevice,
                         onCommandSelected
-                    ).show()
+                    )
+                    this.currentDialog?.show()
                 }
             }
         }
@@ -194,6 +200,7 @@ class RoomDeviceAdapter(
         private val bottomIcon : ImageView = view.findViewById(R.id.bottom_icon)
         private val bottomState: TextView = view.findViewById(R.id.bottom_state)
         private val bottomCard: CardView = view.findViewById(R.id.right_bottom_card)
+        private var currentDialog: PlaceOrderDialog? = null
 
 
         fun bind(roomData: RoomDevices, onCommandSelected: (DeviceEntity, String) -> Unit) {
@@ -208,22 +215,26 @@ class RoomDeviceAdapter(
                 leftState.text = getDeviceState(leftDevice)
                 leftIcon.setImageResource(getDeviceIcon(leftDevice))
                 leftCard.setOnClickListener {
-                    PlaceOrderDialog(
+                    this.currentDialog?.dismiss()
+                    this.currentDialog = PlaceOrderDialog(
                         itemView.context,
                         leftDevice,
                         onCommandSelected
-                    ).show()
+                    )
+                    this.currentDialog?.show()
                 }
                 
                 topName.text = getDeviceName(topDevice)
                 topState.text = getDeviceState(topDevice)
                 topIcon.setImageResource(getDeviceIcon(topDevice))
                 topCard.setOnClickListener {
-                    PlaceOrderDialog(
+                    this.currentDialog?.dismiss()
+                    this.currentDialog = PlaceOrderDialog(
                         itemView.context,
                         topDevice,
                         onCommandSelected
-                    ).show()
+                    )
+                    this.currentDialog?.show()
                 }
 
 
@@ -231,11 +242,13 @@ class RoomDeviceAdapter(
                 bottomState.text = getDeviceState(bottomDevice)
                 bottomIcon.setImageResource(getDeviceIcon(bottomDevice))
                 bottomCard.setOnClickListener {
-                    PlaceOrderDialog(
+                    this.currentDialog?.dismiss()
+                    this.currentDialog = PlaceOrderDialog(
                         itemView.context,
                         bottomDevice,
                         onCommandSelected
-                    ).show()
+                    )
+                    this.currentDialog?.show()
                 }
             }
         }
@@ -245,6 +258,7 @@ class RoomDeviceAdapter(
     internal class ListRoomViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val roomTitle: TextView = view.findViewById(R.id.room_title)
         private val devicesContainer: LinearLayout = view.findViewById(R.id.devices_list_container)
+        private var currentDialog: PlaceOrderDialog? = null
         fun bind(roomData: RoomDevices, onCommandSelected: (DeviceEntity, String) -> Unit) {
             roomTitle.text = roomData.room.name
             devicesContainer.removeAllViews()
@@ -259,11 +273,13 @@ class RoomDeviceAdapter(
                 devicesContainer.addView(miniCard)
 
                 miniCard.setOnClickListener {
-                    PlaceOrderDialog(
+                    this.currentDialog?.dismiss()
+                    this.currentDialog = PlaceOrderDialog(
                         itemView.context,
                         device,
                         onCommandSelected
-                    ).show()
+                    )
+                    this.currentDialog?.show()
                 }
             }
         }

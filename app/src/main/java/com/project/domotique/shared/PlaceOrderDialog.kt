@@ -21,36 +21,26 @@ class PlaceOrderDialog(
     private val onCommandSelected: (DeviceEntity, String) -> Unit
 ) : Dialog(context) {
 
-
     private lateinit var placeOrderBtn : Button
-
     private lateinit var cancelBtn: Button
-
     private lateinit var closePopupImageBtn: ImageButton
-
     private lateinit var availableCommandSpinner : Spinner
-
     private lateinit var deviceName: TextView
-
     private lateinit var deviceNameIcon : ImageView
-
-
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
-        setContentView(R.layout.custom_dialog_layout)
+        setContentView(R.layout.place_command_popup)
         window?.setBackgroundDrawable(android.R.color.transparent.toDrawable())
-        this.setupViews()
+        this.setupView()
         this.closeDialog()
         this.placeCommand()
         this.cancelAction()
     }
 
-
-    private fun setupViews() {
+    private fun setupView() {
         this.deviceName = findViewById(R.id.device_name_input)
         this.deviceNameIcon = findViewById(R.id.device_name_icon)
         this.availableCommandSpinner  = findViewById(R.id.device_name_available_commands_input)
@@ -78,7 +68,6 @@ class PlaceOrderDialog(
     }
 
 
-
     private fun placeCommand() {
         this.placeOrderBtn = findViewById(R.id.place_order_button)
         this.placeOrderBtn.setOnClickListener {
@@ -87,7 +76,6 @@ class PlaceOrderDialog(
             dismiss()
         }
     }
-
 
     private fun cancelAction()
     {
@@ -100,7 +88,7 @@ class PlaceOrderDialog(
 
     private fun closeDialog()
     {
-        this.closePopupImageBtn = findViewById(R.id.dialog_close_btn)
+        this.closePopupImageBtn = findViewById(R.id.dialog_close_icon_btn)
         this.closePopupImageBtn.setOnClickListener {
             dismiss()
         }

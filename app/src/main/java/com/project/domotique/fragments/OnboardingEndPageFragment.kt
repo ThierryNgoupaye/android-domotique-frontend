@@ -49,6 +49,4 @@ class OnboardingEndPageFragment : Fragment() {
         val intentToRegister = Intent(activity as? OnboardingActivity, RegisterActivity::class.java)
         startActivity(intentToRegister)
     }
-
-
 }

@@ -17,42 +17,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
-        <!--
-        <ImageView
-            android:id="@+id/avatarImage"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:contentDescription="@string/profile_avatar"
-            android:scaleType="centerCrop"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Domotique.Circle" />
-
-
-        <TextView
-            android:id="@+id/welcomeText"
-            style="@style/TextAppearance.DomotiqueApp.AppBar.MainContent.Subtitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="7dp"
-            android:text="@string/main_content_title"
-            app:layout_constraintStart_toEndOf="@id/avatarImage"
-            app:layout_constraintTop_toTopOf="@id/avatarImage" />
-
-
-        <TextView
-            android:id="@+id/userNameText"
-            style="@style/TextAppearance.DomotiqueApp.MainContent.Title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:text="@string/user_name"
-            app:layout_constraintStart_toStartOf="@id/welcomeText"
-            app:layout_constraintTop_toBottomOf="@id/welcomeText" />
-        -->
-
         <ImageButton
             android:id="@+id/logoutBtn"
             android:layout_width="35dp"
@@ -65,22 +29,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/appBar"
             app:tint="@color/white" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-    <!--
-        <FrameLayout
-            android:id="@+id/main_content_frame_layout"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/appBar" />
-
-    -->
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment"
@@ -95,6 +45,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appBar"
         app:navGraph="@navigation/nav_graph" />
+
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

@@ -19,9 +19,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var passwordInput : EditText
     private lateinit var loginButton : Button
     private lateinit var registerButton : TextView
-
-
-
+    private  lateinit var localStorageManager: LocalStorageManager
     private val loginViewModel: AuthViewModel by viewModels()
 
 
@@ -30,6 +28,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_login)
+        this.localStorageManager = LocalStorageManager(this)
         this.goToRegisterPage()
         this.observeLoginUiState()
         this.login()
@@ -43,13 +42,11 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this@LoginActivity, errorMessage, Toast.LENGTH_SHORT).show()
             }
             if(state.success) {
-                println("je suis arrivé dans la vue effectivement")
-                println(state.data)
                 state.data?.let{ token ->
-                    val localStorageManager = LocalStorageManager(this@LoginActivity)
                     this.loginInput = findViewById(R.id.login_page_email_input)
-                    localStorageManager.saveUserName(loginInput.text.toString())
-                    localStorageManager.saveToken(token)
+                    this.localStorageManager.saveUserName(loginInput.text.toString())
+                    this.localStorageManager.saveToken(token)
+                    this.localStorageManager.saveOnboardingPreference(true)
                     val intentToHomePage = Intent(this@LoginActivity, HomeActivity::class.java)
                     startActivity(intentToHomePage)
                 }

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardBackgroundColor="@color/gray_300"
+    app:cardCornerRadius="20dp"
+    android:layout_marginBottom="20dp"
+    app:cardElevation="2dp"
+    android:layout_height="60dp">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingVertical="10dp">
+
+        <ImageView
+            android:id="@+id/access_house_user_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:src="@drawable/ic_user_icon"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/image_description"
+            />
+
+        <TextView
+            android:id="@+id/user_house_access_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="NGOUPAYE Thierry"
+            android:layout_marginStart="10dp"
+            app:layout_constraintStart_toEndOf="@id/access_house_user_icon"
+            app:layout_constraintTop_toTopOf="@id/access_house_user_icon"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/access_house_user_icon"
+            />
+
+
+        <ImageButton
+            android:id="@+id/remove_access_btn"
+            android:layout_width="25dp"
+            android:layout_height="30dp"
+            android:contentDescription="@string/image_description"
+            android:src="@drawable/ic_delete_svgrepo_com"
+            android:scaleType="fitXY"
+            android:background="@android:color/transparent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/access_house_user_icon"
+            app:layout_constraintBottom_toBottomOf="@id/access_house_user_icon"
+            android:layout_marginEnd="25dp"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
+
+

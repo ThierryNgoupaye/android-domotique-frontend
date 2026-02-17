@@ -48,12 +48,19 @@
     <string name="device_fragment_title">Maison #%1$d</string>
     <string name="device_count_label">%1$d appareils</string>
     <string name="place_order_popup_available_commands">Commandes disponibles</string>
-    <string name="place_order_selected_device_label">Appareil Selectionné</string>
-    <string name="place_command_popup_subtitle">Transmettez une commande à votre appereil en choisissant une commande parmi celles affichées en bas</string>
+    <string name="place_order_selected_device_label">Appareil Sélectionné</string>
+    <string name="place_command_popup_subtitle">Transmettez une commande à votre appareil en choisissant une commande parmi celles affichées en bas</string>
     <string name="place_command_popup_title">Transmettre une commande</string>
     <string name="place_command_popup_appy_btn_text">Appliquer</string>
     <string name="place_command_cancel_btn_text">Annuler</string>
-    <string name="loading_dialog_text">Chargement...</string>
+    <string name="loading_dialog_text">Chargement…</string>
+    <string name="bottom_bar_maisons_label">Maisons</string>
+    <string name="bottom_bar_appareils_label">Appareils</string>
+    <string name="bottom_bar_acces_label">Accès</string>
+    <string name="acces_fragment_title">Accès à ma maison</string>
+    <string name="acces_house_subtitle">Managez les accès de votre maison. Vous pouvez rendre la gestion accessible à tous les membres de la maison et même à vos proches.</string>
+    <string name="house_access_fragment_no_content_add_access_btn">Accorder un accès</string>
+    <string name="grant_access_user_login_input_hint">Nom d\'utilisateur\n</string>
 
 
 </resources>

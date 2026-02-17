@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="360dp"
+    android:layout_height="380dp"
+    android:background="@android:color/transparent"
+    app:cardBackgroundColor="@color/base_color"
+    app:cardCornerRadius="20dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp">
+
+        <ImageView
+            android:id="@+id/popup_image"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="15dp"
+            android:contentDescription="@string/image_description"
+            android:src="@drawable/house_key_keyword_svgrepo_com"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/dialog_close_icon_btn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:contentDescription="@string/image_description"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_icons8_cancel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/popup_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Accorder un accès"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/popup_image" />
+
+        <TextView
+            android:id="@+id/grant_access_popup_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Veuillez renseigner le nom d'utilisateur de la personne à qui vous voulez accorder un accès à votre maison"
+            android:textAlignment="center"
+            android:textColor="@color/gray_600"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/popup_title" />
+
+        <TextView
+            android:id="@+id/errors_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Une erreur est survenue sdfgh ....."
+            android:textColor="@color/red_500"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/grant_access_popup_subtitle" />
+
+
+        <EditText
+            android:id="@+id/grant_access_user_login_input"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:autofillHints="false"
+            android:background="@drawable/input_border"
+            android:backgroundTint="@color/gray_300"
+            android:gravity="center_vertical"
+            android:hint="@string/grant_access_user_login_input_hint"
+            android:inputType="text"
+            android:paddingVertical="2dp"
+            android:paddingStart="45dp"
+            android:paddingEnd="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/errors_text" />
+
+        <ImageView
+            android:id="@+id/user_login_input_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/ic_user_icon"
+            app:layout_constraintBottom_toBottomOf="@id/grant_access_user_login_input"
+            app:layout_constraintStart_toStartOf="@id/grant_access_user_login_input"
+            app:layout_constraintTop_toTopOf="@id/grant_access_user_login_input" />
+
+
+        <Button
+            android:id="@+id/grant_acces_button"
+            style="@style/ButtonAppearance.DomotiqueApp.Button"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="25dp"
+            android:clickable="true"
+            android:text="Accorder l'accès"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/grant_access_user_login_input" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

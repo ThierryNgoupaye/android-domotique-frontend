@@ -29,13 +29,9 @@ import com.project.domotique.viewModels.SharedViewModel
 class HomeFragment: Fragment() {
 
     private lateinit var houseFilterRecycleView: RecyclerView
-
     private  lateinit var houseListRecycleView: RecyclerView
-
-    private var houseList: List<HouseEntity>? = null
-
+    private lateinit var localeStorageManager : LocalStorageManager
     private val houseViewModel : HouseViewModel by viewModels()
-
     private val sharedViewModel: SharedViewModel by activityViewModels()
 
 
@@ -50,6 +46,7 @@ class HomeFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState)
+        this.localeStorageManager =  LocalStorageManager(requireContext())
         this.observeHouseUi(view)
         this.fetchHouseList()
         this.initHouseFilterList(view)
@@ -74,10 +71,10 @@ class HomeFragment: Fragment() {
     }
 
 
-    private fun initHouseList(view: View)
+    private fun initHouseList(view: View, houseList: List<HouseEntity>)
     {
         this.houseListRecycleView = view.findViewById(R.id.house_list)
-        val houseListAdapter = HouseAdapter(houseList = this.houseList) { house ->
+        val houseListAdapter = HouseAdapter(houseList = houseList) { house ->
             sharedViewModel.setSelectedHouse(house)
             findNavController().navigate(R.id.deviceFragment)
         }
@@ -98,26 +95,22 @@ class HomeFragment: Fragment() {
             if(state.success)
             {
                 state?.data?.let { list ->
-                    this.houseList = list
                     for(house in list)
                     {
                         if(house.owner)
                         {
-                            val localeStorageManager = LocalStorageManager(requireContext())
                             localeStorageManager.setHouseId(house.houseId)
                         }
                     }
-                    this.initHouseList(view)
+                    this.initHouseList(view, list)
                 }
                 if(state.data == null)
                 {
-                    this.houseList = null
                     Toast.makeText(requireContext(), "Erreur", Toast.LENGTH_SHORT).show()
                 }
             }
         }
     }
-
 
     private fun fetchHouseList()
     {

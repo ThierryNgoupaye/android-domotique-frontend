@@ -7,18 +7,19 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.project.domotique.R
+import com.project.domotique.shared.ConfirmPopupDialog
 import com.project.domotique.utils.LocalStorageManager
 import com.project.domotique.viewModels.SharedViewModel
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var logoutBtn: ImageButton
-
     private val sharedViewModel: SharedViewModel by viewModels()
+    private var confirmPopupDialog: ConfirmPopupDialog? = null
+    private lateinit var  localStorageManager : LocalStorageManager
 
 
 
@@ -26,6 +27,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_home_actitvity)
+        this.localStorageManager = LocalStorageManager(this)
         this.setupNavigation()
         this.logOut()
     }
@@ -49,20 +51,32 @@ class HomeActivity : AppCompatActivity() {
                     }
                     true
                 }
+                R.id.house_access_fragment -> {
+                    if (navController.currentDestination?.id != R.id.house_access_fragment) {
+                        navController.navigate(R.id.house_access_fragment)
+                    }
+                    true
+                }
                 else -> false
             }
         }
     }
 
-
     private fun logOut() {
         this.logoutBtn = findViewById(R.id.logoutBtn)
         this.logoutBtn.setOnClickListener {
-            val localStorageManager = LocalStorageManager(this)
-            localStorageManager.removeToken()
-            localStorageManager.removeUserName()
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
+            this.confirmPopupDialog?.dismiss()
+            this.confirmPopupDialog = ConfirmPopupDialog(
+                context = this,
+                title = "Se déconnecter",
+                description = "Êtes vous sur de vouloir vous déconnecter ?",
+                onConfirm = {
+                    localStorageManager.clearPreferences()
+                    startActivity(Intent(this@HomeActivity, LoginActivity::class.java))
+                    finish()
+                }
+            )
+            this.confirmPopupDialog?.show()
         }
     }
 }
