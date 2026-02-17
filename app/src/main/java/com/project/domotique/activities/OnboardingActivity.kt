@@ -28,7 +28,7 @@ class OnboardingActivity : AppCompatActivity(), OnboardingNavigationListener {
         enableEdgeToEdge()
         localStorageManager = LocalStorageManager(this)
         if(this.localStorageManager.getOnboardingPreference()){
-            val intentToLogin = Intent(this, HomeActivity::class.java)
+            val intentToLogin = Intent(this, LoginActivity::class.java)
             startActivity(intentToLogin)
         }
         setContentView(R.layout.activity_onboarding)
