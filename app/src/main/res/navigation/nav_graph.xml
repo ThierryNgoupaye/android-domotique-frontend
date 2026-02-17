@@ -22,5 +22,13 @@
         android:label="Accès à ma maison">
     </fragment>
 
+    <fragment
+        android:id="@id/customCommandFragment"
+        android:name="com.project.domotique.fragments.CustomCommandFragment"
+        android:label="Commandes Personnalisées">
+    </fragment>
+
+
+
 </navigation>
 

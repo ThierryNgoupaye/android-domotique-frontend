@@ -61,6 +61,7 @@
     <string name="acces_house_subtitle">Managez les accès de votre maison. Vous pouvez rendre la gestion accessible à tous les membres de la maison et même à vos proches.</string>
     <string name="house_access_fragment_no_content_add_access_btn">Accorder un accès</string>
     <string name="grant_access_user_login_input_hint">Nom d\'utilisateur\n</string>
+    <string name="bottom_nav_commands_item">Commandes</string>
 
 
 </resources>

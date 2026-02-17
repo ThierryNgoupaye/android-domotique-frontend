@@ -31,7 +31,7 @@
     <!-- Main content styles -->
 
     <style name="TextAppearance.DomotiqueApp.MainContent.Title" parent="TextAppearance.AppCompat">
-      <!--  <item name="android:textStyle">bold</item>-->
+        <!--  <item name="android:textStyle">bold</item>-->
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">@dimen/main_content_app_bar_title_textSize</item>
         <item name="android:textAlignment">center</item>
@@ -47,7 +47,6 @@
         <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:lineSpacingMultiplier">1.1</item>
     </style>
-
 
 
     <!-- Button styles -->
@@ -78,10 +77,10 @@
     <style name="ButtonAppearance.DomotiqueApp.CancelAction.OutlinedButton" parent="Widget.Material3.Button.OutlinedButton">
         <item name="strokeColor">@color/red_300</item>
         <item name="strokeWidth">2dp</item>
-        <item name="android:textAppearance">@style/ButtonAppearance.DomotiqueApp.CancelAction.Button</item>
+        <item name="android:textAppearance">
+            @style/ButtonAppearance.DomotiqueApp.CancelAction.Button
+        </item>
     </style>
-
-
 
 
     <style name="Theme.Domotique_app" parent="Base.Theme.Domotique_app" />

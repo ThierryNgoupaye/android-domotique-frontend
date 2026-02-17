@@ -57,6 +57,12 @@ class HomeActivity : AppCompatActivity() {
                     }
                     true
                 }
+                R.id.customCommandFragment -> {
+                    if (navController.currentDestination?.id != R.id.customCommandFragment) {
+                        navController.navigate(R.id.customCommandFragment)
+                    }
+                    true
+                }
                 else -> false
             }
         }

@@ -17,17 +17,10 @@ class LoadingDialog(
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         setContentView(R.layout.dialog_loading)
-        
-        // Background transparent
         window?.setBackgroundDrawable(android.R.color.transparent.toDrawable())
-        
-        // Non annulable par clic extérieur
         setCancelable(false)
-        
-        // Configure le message
         findViewById<TextView>(R.id.loading_text).text = message
     }
-
 
     companion object {
         fun show(context: Context, message: String = "Chargement..."): LoadingDialog {

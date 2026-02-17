@@ -8,6 +8,12 @@ data class DeviceEntity(
     val power: DeviceState?,
     val openingMode: Int?
 ) {
+    fun getStateLabel(): String {
+        return when (type) {
+            TypeDevice.ROLLING_SHUTTER, TypeDevice.GARAGE_DOOR -> opening?.label ?: "Inconnu"
+            TypeDevice.LIGHT -> power?.label ?: "Inconnu"
+        }
+    }
 
     enum class TypeDevice(val label: String, val value: String) {
         GARAGE_DOOR("Porte de garage", "garage door"),
@@ -45,13 +51,4 @@ data class DeviceEntity(
             }
         }
     }
-
-
-    fun getStateLabel(): String {
-        return when (type) {
-            TypeDevice.ROLLING_SHUTTER, TypeDevice.GARAGE_DOOR -> opening?.label ?: "Inconnu"
-            TypeDevice.LIGHT -> power?.label ?: "Inconnu"
-        }
-    }
-
 }
