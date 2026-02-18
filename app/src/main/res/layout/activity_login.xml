@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="15dp"
-    tools:context=".activities.RegisterActivity">
+    tools:context=".features.auth.presentation.ui.RegisterActivity">
 
     <ImageView
         android:id="@+id/login_image_1"
@@ -41,11 +41,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/login_page_title" />
 
+
+    <TextView
+        android:id="@+id/login_error_text"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:textSize="16sp"
+        android:textColor="@color/red_500"
+        tools:text="Une erreur est survenue"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/login_page_subtitle"
+        app:layout_constraintStart_toStartOf="parent"
+    />
+
     <EditText
         android:id="@+id/login_page_email_input"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:autofillHints="true"
         android:background="@drawable/input_border"
         android:hint="@string/register_page_email_input_hint"
@@ -53,7 +68,7 @@
         android:paddingHorizontal="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/login_page_subtitle" />
+        app:layout_constraintTop_toBottomOf="@id/login_error_text" />
 
     <ImageView
         android:layout_width="35dp"

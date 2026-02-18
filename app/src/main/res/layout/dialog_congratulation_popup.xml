@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="330dp"
+    android:layout_height="280dp"
+    app:cardBackgroundColor="@color/base_color"
+    app:cardCornerRadius="20dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="10dp">
+
+        <ImageView
+            android:id="@+id/popup_image"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="15dp"
+            android:contentDescription="@string/image_description"
+            android:src="@drawable/ic_icons8_congratulation_48"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/dialog_close_icon_btn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:contentDescription="@string/image_description"
+            android:focusable="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_icons8_cancel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/popup_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/popup_image"
+            tools:text="Bienvenue" />
+
+        <TextView
+            android:id="@+id/popup_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
+            android:textAlignment="center"
+            android:textColor="@color/gray_700"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/popup_title"
+            tools:text="Commencez des maintenant à manager vos maisons !" />
+
+        <Button
+            android:id="@+id/okay_button"
+            style="@style/ButtonAppearance.DomotiqueApp.Button"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="25dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginBottom="10dp"
+            android:text="@string/congratulation_popup_okay_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/popup_description"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

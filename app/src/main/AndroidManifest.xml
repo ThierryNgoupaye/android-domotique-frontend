@@ -11,18 +11,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Domotique_app">
         <activity
-            android:name=".activities.HomeActivity"
+            android:name=".features.home.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.RegisterActivity"
+            android:name=".features.auth.presentation.ui.RegisterActivity"
             android:exported="false"
-            android:parentActivityName=".activities.OnboardingActivity" />
+            android:parentActivityName=".features.onboarding.OnboardingActivity" />
         <activity
-            android:name=".activities.LoginActivity"
+            android:name=".features.auth.presentation.ui.LoginActivity"
             android:exported="false"
-            android:parentActivityName=".activities.OnboardingActivity" />
+            android:parentActivityName=".features.onboarding.OnboardingActivity" />
         <activity
-            android:name=".activities.OnboardingActivity"
+            android:name=".features.onboarding.OnboardingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

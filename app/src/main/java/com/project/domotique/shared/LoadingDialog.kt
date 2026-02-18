@@ -13,6 +13,7 @@ class LoadingDialog(
     private val message: String = "Chargement..."
 ) : Dialog(context) {
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -29,4 +30,6 @@ class LoadingDialog(
             return dialog
         }
     }
+
+
 }

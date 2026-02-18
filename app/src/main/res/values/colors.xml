@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
@@ -17,7 +17,6 @@
     <color name="orange_primary_50">#FFF7EB</color>
 
 
-
     <!-- App secondary colors and variants -->
     <color name="secondary_900">#1B5E20</color>
     <color name="secondary_800">#2E7D32</color>
@@ -29,7 +28,6 @@
     <color name="secondary_200">#A5D6A7</color>
     <color name="secondary_100">#C8E6C9</color>
     <color name="secondary_50">#E8F5E9</color>
-
 
     <!-- Base Blanc Cassé -->
     <color name="base_color">#FAF9F6</color>
@@ -43,7 +41,6 @@
     <color name="gray_200">#EEEEEE</color>
     <color name="gray_100">#F5F5F5</color>
     <color name="gray_50">#FAFAFA</color>
-
 
     <!-- Rouge et variantes -->
     <color name="red_900">#B71C1C</color>
@@ -69,8 +66,4 @@
     <color name="purple_200">#CE93D8</color>
     <color name="purple_100">#E1BEE7</color>
     <color name="purple_50">#F3E5F5</color>
-
-
-
-
 </resources>

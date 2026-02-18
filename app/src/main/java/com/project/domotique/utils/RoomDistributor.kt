@@ -1,8 +1,8 @@
 package com.project.domotique.utils
 
-import com.project.domotique.models.entities.DeviceEntity
-import com.project.domotique.models.entities.Room
-import com.project.domotique.models.entities.RoomDevices
+import com.project.domotique.features.home.devices.domain.entities.DeviceEntity
+import com.project.domotique.features.home.devices.domain.entities.Room
+import com.project.domotique.features.home.devices.domain.entities.RoomDevices
 
 object RoomDistributor {
     

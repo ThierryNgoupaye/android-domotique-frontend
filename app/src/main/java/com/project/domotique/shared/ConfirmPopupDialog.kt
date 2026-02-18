@@ -16,8 +16,6 @@ class ConfirmPopupDialog(
     private val description: String,
     private val onConfirm: () -> Unit
 ) : Dialog(context) {
-
-
     private lateinit var popupTitle: TextView
     private lateinit var popupDescription: TextView
     private lateinit var okayButton: Button
@@ -28,7 +26,7 @@ class ConfirmPopupDialog(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
-        setContentView(R.layout.confirm_popup)
+        setContentView(R.layout.dialog_confirm_popup)
         window?.setBackgroundDrawable(android.R.color.transparent.toDrawable())
         this.initViewWidgets()
         this.closePopup()
@@ -65,6 +63,4 @@ class ConfirmPopupDialog(
             this.dismiss()
         }
     }
-
-
 }

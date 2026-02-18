@@ -6,29 +6,26 @@
 
     <fragment
         android:id="@id/homeFragment"
-        android:name="com.project.domotique.fragments.HomeFragment"
+        android:name="com.project.domotique.features.home.house.presentation.ui.HouseFragment"
         android:label="Mes Maisons">
     </fragment>
 
     <fragment
         android:id="@id/deviceFragment"
-        android:name="com.project.domotique.fragments.DeviceFragment"
+        android:name="com.project.domotique.features.home.devices.presentation.ui.DeviceFragment"
         android:label="Appareils">
     </fragment>
 
     <fragment
         android:id="@id/house_access_fragment"
-        android:name="com.project.domotique.fragments.HouseAccessFragment"
+        android:name="com.project.domotique.features.home.houseAccess.presentation.HouseAccessFragment"
         android:label="Accès à ma maison">
     </fragment>
 
     <fragment
         android:id="@id/customCommandFragment"
-        android:name="com.project.domotique.fragments.CustomCommandFragment"
+        android:name="com.project.domotique.features.home.customCommands.presentation.CustomCommandFragment"
         android:label="Commandes Personnalisées">
     </fragment>
-
-
-
 </navigation>
 

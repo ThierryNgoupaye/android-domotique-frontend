@@ -1,0 +1,33 @@
+package com.project.domotique.features.home.devices.domain.entities
+
+import com.project.domotique.features.home.devices.domain.entities.Room
+
+data class RoomDevices(
+    val room: Room,
+    val shutters: List<DeviceEntity>,
+    val lights: List<DeviceEntity>,
+    val garageDoor: DeviceEntity?
+) {
+
+    val totalDevices: Int
+        get() = this.shutters.size + this.lights.size + (if (this.garageDoor != null) 1 else 0)
+
+
+    val allDevices: List<DeviceEntity>
+        get() {
+            val devices = mutableListOf<DeviceEntity>()
+            garageDoor?.let { devices.add(it) }
+            devices.addAll(this.shutters)
+            devices.addAll(this.lights)
+            return devices
+        }
+
+    fun getShuttersNumber() = this.shutters.size
+
+
+    fun getLightsNumber() = this.lights.size
+
+    fun getGarageDoorNumber() =  if (this.garageDoor != null) 1 else 0
+
+
+}

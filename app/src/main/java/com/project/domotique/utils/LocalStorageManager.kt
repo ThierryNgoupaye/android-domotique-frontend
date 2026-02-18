@@ -5,11 +5,9 @@ import android.content.SharedPreferences
 import androidx.core.content.edit
 
 class LocalStorageManager {
-
     private  var context: Context
     private var sharedPreferenceName: String = Constants.SHARED_PREFERENCES_KEY_NAME
     private var sharedPreferences: SharedPreferences
-
 
     constructor(context: Context, sharedPreferenceName: String) {
         this.context = context
@@ -17,12 +15,10 @@ class LocalStorageManager {
         this.sharedPreferences = this.context.getSharedPreferences(sharedPreferenceName, Context.MODE_PRIVATE)
     }
 
-
     constructor(context: Context) {
         this.context = context
         this.sharedPreferences = this.context.getSharedPreferences(sharedPreferenceName, Context.MODE_PRIVATE)
     }
-
 
     fun saveToken(token: String) {
         this.sharedPreferences.edit {
@@ -30,18 +26,15 @@ class LocalStorageManager {
         }
     }
 
-
     fun getToken(): String? {
         return this.sharedPreferences.getString(Constants.TOKEN_KEY_NAME, null)
     }
-
 
     fun removeToken() {
         this.sharedPreferences.edit {
             remove(Constants.TOKEN_KEY_NAME)
         }
     }
-
 
     fun saveOnboardingPreference(registered: Boolean)
     {
@@ -50,12 +43,10 @@ class LocalStorageManager {
         }
     }
 
-
     fun getOnboardingPreference(): Boolean
     {
         return this.sharedPreferences.getBoolean(Constants.ONBOARDING_PREFERENCES_KEY_NAME, false)
     }
-
 
     fun removeOnboardingPreference()
     {
@@ -64,7 +55,6 @@ class LocalStorageManager {
         }
     }
 
-
     fun saveUserName(userName: String)
     {
         this.sharedPreferences.edit {
@@ -72,11 +62,9 @@ class LocalStorageManager {
         }
     }
 
-
     fun getUserName(): String? {
         return this.sharedPreferences.getString(Constants.USER_NAME_KEY_NAME, "Guess User")
     }
-
 
     fun removeUserName() {
         this.sharedPreferences.edit {
@@ -100,11 +88,43 @@ class LocalStorageManager {
         }
     }
 
+     fun saveNewUserPreferences(isUserNew: Boolean)
+    {
+        this.sharedPreferences.edit {
+            putBoolean(Constants.IS_NEW_USER_KEY, isUserNew)
+        }
+    }
+
+    fun getNewUserPreferences(): Boolean
+    {
+        return this.sharedPreferences.getBoolean(Constants.IS_NEW_USER_KEY, false)
+    }
+
+
+    fun saveUserLoggedPreferences(isUserLogged: Boolean)
+    {
+        this.sharedPreferences.edit {
+            putBoolean(Constants.IS_USER_LOGGED_KEY, isUserLogged)
+        }
+    }
+
+    fun getUserLoggedPreferences(): Boolean
+    {
+        return this.sharedPreferences.getBoolean(Constants.IS_USER_LOGGED_KEY, false)
+    }
+
+    fun removeUserLoggedPreferences()
+    {
+        this.sharedPreferences.edit {
+            remove(Constants.IS_USER_LOGGED_KEY)
+        }
+    }
 
     fun clearPreferences() {
         this.removeHouseId()
         this.removeToken()
         this.removeUserName()
+        this.removeUserLoggedPreferences()
     }
 
     fun clearAll()
@@ -112,8 +132,6 @@ class LocalStorageManager {
         this.clearPreferences()
         this.removeOnboardingPreference()
     }
-
-
 }
 
 

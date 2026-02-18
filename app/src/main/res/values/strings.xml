@@ -42,6 +42,9 @@
     <string name="my_house_fragment_title">Mes maisons</string>
 
 
+    <string name="house_number_label">Numéro: %1$d</string>
+
+
 
     <!-- Device Fragment Text -->
     <string name="device_fragment_default_title">Ma maison</string>
@@ -56,6 +59,8 @@
     <string name="loading_dialog_text">Chargement…</string>
     <string name="bottom_bar_maisons_label">Maisons</string>
     <string name="bottom_bar_appareils_label">Appareils</string>
+
+    <!-- House Access Fragment Text -->
     <string name="bottom_bar_acces_label">Accès</string>
     <string name="acces_fragment_title">Accès à ma maison</string>
     <string name="acces_house_subtitle">Managez les accès de votre maison. Vous pouvez rendre la gestion accessible à tous les membres de la maison et même à vos proches.</string>
@@ -63,5 +68,14 @@
     <string name="grant_access_user_login_input_hint">Nom d\'utilisateur\n</string>
     <string name="bottom_nav_commands_item">Commandes</string>
 
+
+    <string name="empty_field_error">Veuillez remplir tous les champs obligatoires</string>
+    <string name="invalid_credentials_error">Identifiant ou mot de passe incorrect</string>
+    <string name="customCommandSubtitle">Vous pouvez passer de superbes commandes groupés en choisissant parmi les options proposées.</string>
+    <string name="custom_command_title">Commandes Rapides</string>
+    <string name="confirm_popup_cancel_btn">Annuler</string>
+    <string name="confirm_popup_okay_btn">Oui</string>
+    <string name="congratulation_popup_okay_btn">Ok</string>
+    <string name="logout_text">Se déconnecter</string>
 
 </resources>

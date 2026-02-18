@@ -1,16 +1,14 @@
 package com.project.domotique.utils
 
-import com.project.domotique.models.entities.CommandEntity.Command
-import com.project.domotique.models.entities.CustomCommandEntity
-import com.project.domotique.models.entities.CustomCommandEntity.CustomCommand
-import com.project.domotique.models.entities.DeviceEntity
-import com.project.domotique.models.entities.DeviceEntity.DeviceState
-import com.project.domotique.models.entities.DeviceEntity.TypeDevice
-import com.project.domotique.models.models.CommandRequest
+import com.project.domotique.features.home.devices.domain.entities.CommandEntity.Command
+import com.project.domotique.features.home.customCommands.domain.CustomCommandEntity
+import com.project.domotique.features.home.customCommands.domain.CustomCommandEntity.CustomCommand
+import com.project.domotique.features.home.devices.domain.entities.DeviceEntity
+import com.project.domotique.features.home.devices.domain.entities.DeviceEntity.DeviceState
+import com.project.domotique.features.home.devices.domain.entities.DeviceEntity.TypeDevice
+import com.project.domotique.features.home.devices.data.CommandRequest
 
 object CustomCommandResolver {
-
-
     fun resolve(command: CustomCommand, devices: List<DeviceEntity>): List<Pair<DeviceEntity, CommandRequest>> {
         return when (command) {
             CustomCommand.TURN_ON_ALL_LIGHT_IN_FIRST_FLOOR ->
